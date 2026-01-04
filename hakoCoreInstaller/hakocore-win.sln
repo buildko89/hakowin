@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "hakocore-win", "hakocore-win\hakocore-win.vdproj", "{E50134FA-385F-C69C-7792-ECA589AFF5AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomAction", "CustomAction\CustomAction.csproj", "{E70D4CB1-FA5A-4A1E-BC84-3659AADCC151}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E50134FA-385F-C69C-7792-ECA589AFF5AA}.Debug|Any CPU.ActiveCfg = Debug
+		{E50134FA-385F-C69C-7792-ECA589AFF5AA}.Debug|Any CPU.Build.0 = Debug
+		{E50134FA-385F-C69C-7792-ECA589AFF5AA}.Release|Any CPU.ActiveCfg = Release
+		{E50134FA-385F-C69C-7792-ECA589AFF5AA}.Release|Any CPU.Build.0 = Release
+		{E70D4CB1-FA5A-4A1E-BC84-3659AADCC151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E70D4CB1-FA5A-4A1E-BC84-3659AADCC151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E70D4CB1-FA5A-4A1E-BC84-3659AADCC151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E70D4CB1-FA5A-4A1E-BC84-3659AADCC151}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EBF6935-7E9A-4822-928E-846B773D338C}
+	EndGlobalSection
+EndGlobal
