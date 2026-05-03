@@ -5,6 +5,7 @@
 
 - 箱庭ラボのリポジトリ
 [箱庭コア機能](https://github.com/hakoniwalab/hakoniwa-core-pro.git)
+
 [箱庭ドローンシミュレータ](https://github.com/toppers/hakoniwa-drone-core/tree/main)
 
 
@@ -24,22 +25,22 @@
 
 - 箱庭コア機能インストーラ
 
-[hakoCoreInstaller](https://github.com/buildko89/documents/blob/main/hakodoc/wininstall-doc/coreinstall.md)
+[hakoCoreInstaller](https://github.com/buildko89/documents/blob/main/docs/hakodoc/wininstall-doc/coreinstall.md)
 
 - 箱庭ドローンシミュレータインストーラ
 
-[hakoAppsInstaller](https://github.com/buildko89/documents/blob/main/hakodoc/wininstall-doc/appsinstall.md)
+[hakoAppsInstaller](https://github.com/buildko89/documents/blob/main/docs/hakodoc/wininstall-doc/appsinstall.md)
 
 
 ## 各種アプリケーション ドキュメント
 
 - 箱庭ドローンシミュレータ Python API操作 アプリケーション
 
-[hakoWinAppsAPI](https://github.com/buildko89/documents/blob/main/hakodoc/winapps-doc/hakoapi.md)
+[hakoWinAppsAPI](https://github.com/buildko89/documents/blob/main/docs/hakodoc/winapps-doc/hakoapi.md)
 
 - 箱庭ドローンシミュレータ ゲームコントローラ操縦 アプリケーション
 
-[hakoWinAppsAPI](https://github.com/buildko89/documents/blob/main/hakodoc/winapps-doc/hakorc.md)
+[hakoWinAppsAPI](https://github.com/buildko89/documents/blob/main/docs/hakodoc/winapps-doc/hakorc.md)
 
 ## ソースコードの利用について
 
