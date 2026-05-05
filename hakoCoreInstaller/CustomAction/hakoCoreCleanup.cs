@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace hakoCoreInstaller.Helpers
@@ -36,6 +38,48 @@ namespace hakoCoreInstaller.Helpers
 #if DEBUG
         MessageBox.Show($"PYTHONPATHから削除: {hakopyPath}\n結果: {pythonPath}");
 #endif
+      }
+    }
+
+    public static void RemoveDesktopExamples()
+    {
+      string desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+      string examplesPath = Path.Combine(desktop, "hakoCore-win", "examples");
+
+      if (Directory.Exists(examplesPath))
+      {
+        try
+        {
+          Directory.Delete(examplesPath, true);
+        }
+        catch (Exception ex)
+        {
+          Debug.WriteLine("examplesフォルダ削除失敗: " + ex.Message);
+        }
+      }
+    }
+
+    public static void RemoveShortcut()
+    {
+      RemoveShortcutFromDesktopFolder("hakoCore-win");
+      RemoveShortcutFromDesktopFolder("hakoApps-win");
+    }
+
+    private static void RemoveShortcutFromDesktopFolder(string folderName)
+    {
+      string desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+      string shortcutPath = Path.Combine(desktop, folderName, "インストールフォルダを開く.lnk");
+
+      if (File.Exists(shortcutPath))
+      {
+        try
+        {
+          File.Delete(shortcutPath);
+        }
+        catch (Exception ex)
+        {
+          Debug.WriteLine("ショートカット削除失敗: " + ex.Message);
+        }
       }
     }
   }
