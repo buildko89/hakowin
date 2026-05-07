@@ -161,18 +161,18 @@ namespace CustomAction
         string desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
         string desktopFolder = Path.Combine(desktop, "hakoCore-win");
         Directory.CreateDirectory(desktopFolder);
-        string shortcutLocation = Path.Combine(desktopFolder, "インストールフォルダを開く.lnk");
+        string shortcutLocation = Path.Combine(desktopFolder, "hakoCore-winフォルダを開く.lnk");
 
         WshShell shell = new WshShell();
         IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
         shortcut.TargetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "explorer.exe");
         shortcut.Arguments = QuotePath(installPath); // インストール先フォルダを開く
-        shortcut.Description = "インストールフォルダを開く";
+        shortcut.Description = "hakoCore-winフォルダを開く";
         shortcut.Save();
       }
       catch (Exception ex)
       {
-        WriteInstallLog("デスクトップへのexamplesコピーまたはショートカット作成に失敗しました。", ex);
+        WriteInstallLog("デスクトップへのexamplesコピーまたはhakoCore-winのショートカット作成に失敗しました。", ex);
       }
     }
 

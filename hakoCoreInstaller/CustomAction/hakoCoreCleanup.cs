@@ -68,7 +68,7 @@ namespace hakoCoreInstaller.Helpers
     private static void RemoveShortcutFromDesktopFolder(string folderName)
     {
       string desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-      string shortcutPath = Path.Combine(desktop, folderName, "インストールフォルダを開く.lnk");
+      string shortcutPath = Path.Combine(desktop, folderName, "hakoCore-winフォルダを開く.lnk");
 
       if (File.Exists(shortcutPath))
       {
