@@ -15,6 +15,7 @@
 #include <xlocbuf>
 #include <locale>
 #include <codecvt>
+#include <vector>
 
 #include <shellapi.h> // ファイル先頭に追加
 
@@ -86,13 +87,51 @@ public:
     }
   }
 
-  void runPowerShellCommand(const std::string& command, const std::string& directory) {
-    std::string fullCommand = "cd /d " + directory + " && start powershell -NoExit -Command \"" + command + "\"";
+  CString EscapePowerShellSingleQuotedString(const CString& value) {
+    CString escaped(value);
+    escaped.Replace(_T("'"), _T("''"));
+    return escaped;
+  }
 
-    int result = system(fullCommand.c_str());
-    if (result != 0) {
+  void runPowerShellCommand(const std::string& command, const std::string& directory) {
+    CString commandText(CA2W(command.c_str()));
+    CString directoryText(CA2W(directory.c_str()));
+    CString psCommand;
+    psCommand.Format(
+      _T("Set-Location -LiteralPath '%s'; %s"),
+      EscapePowerShellSingleQuotedString(directoryText).GetString(),
+      commandText.GetString());
+
+    CString commandLine;
+    commandLine.Format(
+      _T("powershell.exe -NoExit -NoProfile -ExecutionPolicy Bypass -Command \"%s\""),
+      psCommand.GetString());
+
+    std::vector<wchar_t> mutableCommandLine(commandLine.GetString(), commandLine.GetString() + commandLine.GetLength() + 1);
+
+    STARTUPINFO si = {};
+    si.cb = sizeof(si);
+    PROCESS_INFORMATION pi = {};
+
+    BOOL started = ::CreateProcess(
+      nullptr,
+      mutableCommandLine.data(),
+      nullptr,
+      nullptr,
+      FALSE,
+      CREATE_NEW_CONSOLE,
+      nullptr,
+      nullptr,
+      &si,
+      &pi);
+
+    if (!started) {
       std::cerr << "Failed to execute PowerShell command: " << command << std::endl;
+      return;
     }
+
+    ::CloseHandle(pi.hProcess);
+    ::CloseHandle(pi.hThread);
   }
 
   int runPowerShellCommand2(const std::string& command, const std::string& directory) {
