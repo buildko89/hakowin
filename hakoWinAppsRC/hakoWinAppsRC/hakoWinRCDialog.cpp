@@ -70,11 +70,10 @@ void hakoWinRCDialog::OnBnClickedOk()
   int sel = m_confFile.GetCurSel();
   if (sel != CB_ERR)
   {
-    // 表示ラベルではなく、ItemDataPtr に保持してあるファイル名を取得
-    CString* pFilename = (CString*)m_confFile.GetItemDataPtr(sel);
-    if (pFilename != nullptr)
+    DWORD_PTR data = m_confFile.GetItemData(sel);
+    if (data != CB_ERR && data < m_confFileNames.size())
     {
-      m_HakoRCConf = *pFilename;  // ファイル名を格納
+      m_HakoRCConf = m_confFileNames[static_cast<size_t>(data)];
     }
   }
 
@@ -128,6 +127,7 @@ std::map<CString, CString> LoadLabelMapFromConf(const CString& confPath)
 void hakoWinRCDialog::InitConfList(void)
 {
   m_confFile.SubclassDlgItem(IDC_COMBO1, this);
+  m_confFileNames.clear();
 
   // confファイルからラベルマップを読み込む
   CString confPath = m_CurrentPath + _T("\\controller_map.conf");
@@ -172,7 +172,8 @@ void hakoWinRCDialog::InitConfList(void)
       {
         CString label = it->second.Trim();
         int index = m_confFile.AddString(label);
-        m_confFile.SetItemDataPtr(index, new CString(filename));
+        m_confFileNames.push_back(filename);
+        m_confFile.SetItemData(index, static_cast<DWORD_PTR>(m_confFileNames.size() - 1));
 
         if (filename.CompareNoCase(_T("ps4-control.json")) == 0)
           ps4Index = index;

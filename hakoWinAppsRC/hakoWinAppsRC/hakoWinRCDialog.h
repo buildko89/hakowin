@@ -1,5 +1,6 @@
 #pragma once
 #include "afxdialogex.h"
+#include <vector>
 
 
 // hakoWinRCDialog ダイアログ
@@ -26,6 +27,7 @@ protected:
   DECLARE_MESSAGE_MAP()
 
   CComboBox m_confFile;
+  std::vector<CString> m_confFileNames;
 
   virtual BOOL OnInitDialog();
   virtual void OnBnClickedOk();
